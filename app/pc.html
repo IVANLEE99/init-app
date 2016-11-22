@@ -1,0 +1,1546 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app2.js"></script>
+    <base href="http://s.wanfangdata.com.cn/Paper.aspx?q=%E7%88%AC%E8%99%AB&amp;f=top">
+    <meta name="viewport" content="width=1170" />
+    <meta content="history" name="save" />
+    <link href="http://static.wanfangdata.com.cn/wfks/css/animate.min.css?v=201610091258" rel="stylesheet" />
+    <link href="http://static.wanfangdata.com.cn/wfks/css/global.min.css?v=201610091258" rel="stylesheet" />
+
+    <link href="/Content/search.min.css?v=201610091258" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9 ]><link href="http://static.wanfangdata.com.cn/wfks/css/ltie9.css?v=201610091258" rel="stylesheet" /><![endif]-->
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../favicon.ico" />
+    <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+    
+    <title>
+        万方数据知识服务平台
+        -论文检索结果</title>
+
+</head>
+<body>
+    <div class="header">
+        <div class="nav clear">
+            <a href="http://www.wanfangdata.com.cn/">
+                <img class="logo" src="http://static.wanfangdata.com.cn/wfks/img/logo_new.png" alt="" /></a>
+            <ul>
+                <li class="active fixed" data-target="search-wrap">检索</li>
+                <li id="navResource" data-target="resource-wrap">资源</li>
+                <li id="navService" data-target="service-wrap">服务</li>
+                <li class="profile"></li>
+            </ul>
+        </div>
+        <div class="width-wrap search-wrap active fixed">
+            <div class="panel search-panel clear">
+                <div class="drp res-drp clear">
+                    <div class="res-lb">
+                        <span id="res" class="lb">学术论文</span>
+                        <i class="icon-more"></i>
+                    </div>
+                    <div class="res-list bd pop" data-open=".res-lb">
+                        <span class="clear-shadow"></span>
+                        <ul class="resource clear"></ul>
+                        <ul class="library clear"></ul>
+                    </div>
+                </div>
+                <input class="search-input" type="search" name="q" autocomplete="off" />
+                <div id="adSearchBtn" class="icon-search-ad" type="button">
+    <div class="search-ad pop">
+                    <a target="_blank" id="adSearchLink" href="http://librarian.wanfangdata.com.cn/">跨库检索</a>
+                    <a target="_blank" href="http://www.wanfangdata.com.cn/NewGuide?helpitem=searchepaper">检索帮助</a>
+                </div>
+    </div>
+                <button class="btn icon-search search-btn" type="submit"></button>
+                <div class="search-tip-field pop"></div>
+            </div>
+        </div>
+        <div class="width-wrap resource-wrap">
+            <div class="panel resource-panel"></div>
+        </div>
+        <div class="width-wrap service-wrap">
+            <div class="panel service-panel clear">
+                <div class="md">
+                    <div class="hd clear">
+                        <i class="icon icon-zzfu"></i>
+                        <h6 class="tt">增值服务</h6>
+                    </div>
+                    <div class="bd">
+                        <a target="_blank" href="http://social.wanfangdata.com.cn/">万方学术圈</a>
+                        <a target="_blank" href="http://trend.wanfangdata.com.cn/">知识脉络分析</a>
+                        <a target="_blank" href="http://librarian.wanfangdata.com.cn/">查新/跨库检索</a>
+                        <a target="_blank" href="http://librarian.wanfangdata.com.cn/ScientificLiterature">科技文献分析</a>                        
+                    </div>
+                </div>
+                <div class="md">
+                    <div class="hd clear">
+                        <i class="icon icon-gjlfu"></i>
+                        <h6 class="tt">工具类服务</h6>
+                    </div>
+                    <div class="bd">
+                        <a target="_blank" href="http://check.wanfangdata.com.cn/">论文相似性检测</a>
+                        <a target="_blank" href="http://stats.wanfangdata.com.cn/">国家经济统计数据库</a>
+                        <a target="_blank" href="http://patentool.wanfangdata.com.cn/">专利工具</a>
+                    </div>
+                </div>
+                <div class="md">
+                    <div class="hd clear">
+                        <i class="icon icon-bjbzyfu"></i>
+                        <h6 class="tt">编辑部专用服务</h6>
+                    </div>
+                    <div class="bd">
+                        <a target="_blank" href="http://stats.editors.wanfangdata.com.cn/">期刊统计分析与评价</a>
+                        <a target="_blank" href="http://www.wanfangdata.com.cn/ResourceDescription/DOI">中文DOI</a>
+                        <a target="_blank" href="http://publish.wanfangdata.com.cn/">优先出版</a>
+                        <a target="_blank" href="http://publish.wanfangdata.com.cn/Regular">同步出版</a>
+                        <a target="_blank" href="http://editors.wanfangdata.com.cn/">编审平台</a>
+                    </div>
+                </div>
+                <div class="md">
+                    <div class="hd clear">
+                        <i class="icon icon-zzzyff"></i>
+                        <h6 class="tt">作者专用服务</h6>
+                    </div>
+                    <div class="bd">
+                        <a target="_blank" href="http://www.wanfangdata.com.cn/UserService?tab=citenotice">引用通知</a>
+                        <a target="_blank" href="http://contribute.wanfangdata.com.cn/">投稿</a>
+                        <a target="_blank" href="http://oa.wanfangdata.com.cn/">OA论文托管</a>
+                    </div>
+                </div>
+                <div class="md last-md">
+                    <div class="hd clear">
+                        <i class="icon icon-yqzl"></i>
+                        <h6 class="tt">舆情专栏</h6>
+                    </div>
+                    <div class="bd">
+                        <a target="_blank" href="http://subject.wanfangdata.com.cn/">专题</a>
+                        <a target="_blank" href="http://message.wanfangdata.com.cn/">科技动态</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="width-wrap account-wrap">
+            <div class="panel account-panel clear">
+                <div class="top-link">
+                    <a class="login-link">登录</a>
+                    <a href="http://login.wanfangdata.com.cn/Register/Index">注册</a>
+                    <a href="http://login.wanfangdata.com.cn/Logout.aspx">退出</a>
+                </div>
+                <div class="account-container">
+                    <div class="account person-account">
+                        <i class="icon icon-point"></i>
+                        <span class="display-name"></span>
+                        <span class="my-link">
+                            <a target="_blank" href="http://www.wanfangdata.com.cn/UserService?tab=myorder">查看订单</a>
+                            <a target="_blank" href="http://www.wanfangdata.com.cn/UserService?tab=citenotice">引用通知</a>
+                            <a target="_blank" href="http://www.wanfangdata.com.cn/UserService?tab=mywallet">我的钱包</a>
+                            <a target="_blank" href="http://tran.wanfangdata.com.cn/Charge.aspx">充值</a>
+                            <a target="_blank" class="last-item" href="http://www.wanfangdata.com.cn/UserService?tab=edituser">个人信息管理</a>
+                        </span>
+                    </div>
+                    <div class="account group-account">
+                        <i class="icon icon-point"></i>
+                        <span class="display-name"></span>
+                        <span class="my-link">
+                            <a target="_blank" class="order-link" href="http://istic.wanfangdata.com.cn/Order">查看订单</a>
+                            <a target="_blank" class="last-item group-center" href="http://www.wanfangdata.com.cn/Organization">服务站</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                            
+    
+    <div class="content content-search clear">
+        <div class="left">
+            <div class="total-records">
+                
+    共检索到<span>3,058条</span>记录
+
+            </div>
+            
+    <div class="cluster">
+        
+<div class="md md-cluster">
+    
+    <div class="hd clear">
+        
+        <span class="title">出版状态</span>
+    </div>
+    <div class="bd">
+        
+                
+                
+                
+                    <p class="cluster-item publishState">
+                        <span class="unit">3054篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e5%87%ba%e7%89%88%e7%8a%b6%e6%80%81%3a%e6%ad%a3&f=publishState' title='正式出版论文'>
+                            <span class="arrow-right">></span>
+                            <span class="text">正式出版论文</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item publishState">
+                        <span class="unit">4篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e5%87%ba%e7%89%88%e7%8a%b6%e6%80%81%3a%e9%a2%84%e9%9d%9e&f=publishState' title='优先出版论文'>
+                            <span class="arrow-right">></span>
+                            <span class="text">优先出版论文</span>    
+                        </a>
+                    </p>
+                
+            
+    </div>
+</div>
+
+        
+<div class="md md-cluster">
+    <div class="hd clear">
+        
+        <span class="title">学科分类</span>
+    </div>
+    <div class="bd">
+        
+        
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">2304篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22T*%22&f=subjectCatagory' title='工业技术'>
+                        <span class="arrow-right">></span>
+                        <span class="text">工业技术</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">165篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22G*%22&f=subjectCatagory' title='文化、科学、教育、体育'>
+                        <span class="arrow-right">></span>
+                        <span class="text">文化、科学、教育、体育</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">119篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22Q*%22&f=subjectCatagory' title='生物科学'>
+                        <span class="arrow-right">></span>
+                        <span class="text">生物科学</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">109篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22F*%22&f=subjectCatagory' title='经济'>
+                        <span class="arrow-right">></span>
+                        <span class="text">经济</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">78篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22S*%22&f=subjectCatagory' title='农业科学'>
+                        <span class="arrow-right">></span>
+                        <span class="text">农业科学</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">44篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22R*%22&f=subjectCatagory' title='医药、卫生'>
+                        <span class="arrow-right">></span>
+                        <span class="text">医药、卫生</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 subjectCatagory">
+                    <span class="unit">27篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22P*%22&f=subjectCatagory' title='天文学、地球科学'>
+                        <span class="arrow-right">></span>
+                        <span class="text">天文学、地球科学</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">16篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22N*%22&f=subjectCatagory' title='自然科学总论'>
+                        <span class="arrow-right">></span>
+                        <span class="text">自然科学总论</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">15篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22C*%22&f=subjectCatagory' title='社会科学总论'>
+                        <span class="arrow-right">></span>
+                        <span class="text">社会科学总论</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">14篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22D*%22&f=subjectCatagory' title='政治、法律'>
+                        <span class="arrow-right">></span>
+                        <span class="text">政治、法律</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">12篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22X*%22&f=subjectCatagory' title='环境科学、安全科学'>
+                        <span class="arrow-right">></span>
+                        <span class="text">环境科学、安全科学</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">11篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22I*%22&f=subjectCatagory' title='文学'>
+                        <span class="arrow-right">></span>
+                        <span class="text">文学</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">9篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22H*%22&f=subjectCatagory' title='语言、文字'>
+                        <span class="arrow-right">></span>
+                        <span class="text">语言、文字</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">5篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22V*%22&f=subjectCatagory' title='航空、航天'>
+                        <span class="arrow-right">></span>
+                        <span class="text">航空、航天</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">5篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22K*%22&f=subjectCatagory' title='历史、地理'>
+                        <span class="arrow-right">></span>
+                        <span class="text">历史、地理</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">5篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22O*%22&f=subjectCatagory' title='数理科学和化学'>
+                        <span class="arrow-right">></span>
+                        <span class="text">数理科学和化学</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">4篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22U*%22&f=subjectCatagory' title='交通运输'>
+                        <span class="arrow-right">></span>
+                        <span class="text">交通运输</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">3篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22E*%22&f=subjectCatagory' title='军事'>
+                        <span class="arrow-right">></span>
+                        <span class="text">军事</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item tree-0 more">
+                    <span class="unit">2篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e5%88%86%e7%b1%bb%e5%8f%b7%3a%22J*%22&f=subjectCatagory' title='艺术'>
+                        <span class="arrow-right">></span>
+                        <span class="text">艺术</span>
+                    </a>
+                </p>
+            
+    </div>
+</div>
+
+        
+<div class="md md-cluster">
+    
+    <div class="hd clear">
+        
+        <span class="title">论文类型</span>
+    </div>
+    <div class="bd">
+        
+                
+                
+                
+                    <p class="cluster-item paperType">
+                        <span class="unit">1547篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e8%ae%ba%e6%96%87%e7%b1%bb%e5%9e%8b%3aWF_XW&f=paperType' title='学位论文'>
+                            <span class="arrow-right">></span>
+                            <span class="text">学位论文</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item paperType">
+                        <span class="unit">1196篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e8%ae%ba%e6%96%87%e7%b1%bb%e5%9e%8b%3aWF_QK&f=paperType' title='期刊论文'>
+                            <span class="arrow-right">></span>
+                            <span class="text">期刊论文</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item paperType">
+                        <span class="unit">196篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e8%ae%ba%e6%96%87%e7%b1%bb%e5%9e%8b%3aNSTL_QK&f=paperType' title='外文期刊'>
+                            <span class="arrow-right">></span>
+                            <span class="text">外文期刊</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item paperType">
+                        <span class="unit">113篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e8%ae%ba%e6%96%87%e7%b1%bb%e5%9e%8b%3aWF_HY&f=paperType' title='会议论文'>
+                            <span class="arrow-right">></span>
+                            <span class="text">会议论文</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item paperType">
+                        <span class="unit">5篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e8%ae%ba%e6%96%87%e7%b1%bb%e5%9e%8b%3aNSTL_HY&f=paperType' title='外文会议'>
+                            <span class="arrow-right">></span>
+                            <span class="text">外文会议</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item paperType">
+                        <span class="unit">1篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e8%ae%ba%e6%96%87%e7%b1%bb%e5%9e%8b%3aOA&f=paperType' title='OA论文'>
+                            <span class="arrow-right">></span>
+                            <span class="text">OA论文</span>    
+                        </a>
+                    </p>
+                
+            
+    </div>
+</div>
+
+        
+        
+<div class="md md-cluster">
+    <div class="hd clear">
+        
+        <span class="expand" data-date="true">展开</span>
+        <span class="title">年份</span>
+    </div>
+    <div class="bd">
+        
+                <p class="cluster-item">
+                    <span class="unit">544篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2015-2016&f=year'>
+                        <span class="arrow-right">></span>
+                        <span class="text">近一年</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item">
+                    <span class="unit">1294篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2013-2016&f=year'>
+                        <span class="arrow-right">></span>
+                        <span class="text">近三年</span>
+                    </a>
+                </p>
+            
+                <p class="cluster-item">
+                    <span class="unit">1911篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2011-2016&f=year'>
+                        <span class="arrow-right">></span>
+                        <span class="text">近五年</span>
+                    </a>
+                </p>
+            
+        
+                <p class="cluster-item more">
+                    <span class="unit">158篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2016-2016&f=year'>
+                        <span class="arrow-right">></span>
+                        2016
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">386篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2015-2015&f=year'>
+                        <span class="arrow-right">></span>
+                        2015
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">399篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2014-2014&f=year'>
+                        <span class="arrow-right">></span>
+                        2014
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">351篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2013-2013&f=year'>
+                        <span class="arrow-right">></span>
+                        2013
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">285篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2012-2012&f=year'>
+                        <span class="arrow-right">></span>
+                        2012
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">332篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2011-2011&f=year'>
+                        <span class="arrow-right">></span>
+                        2011
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">347篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2010-2010&f=year'>
+                        <span class="arrow-right">></span>
+                        2010
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">249篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2009-2009&f=year'>
+                        <span class="arrow-right">></span>
+                        2009
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">223篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2008-2008&f=year'>
+                        <span class="arrow-right">></span>
+                        2008
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">133篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2007-2007&f=year'>
+                        <span class="arrow-right">></span>
+                        2007
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">75篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2006-2006&f=year'>
+                        <span class="arrow-right">></span>
+                        2006
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">27篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2005-2005&f=year'>
+                        <span class="arrow-right">></span>
+                        2005
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">31篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2004-2004&f=year'>
+                        <span class="arrow-right">></span>
+                        2004
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">15篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2003-2003&f=year'>
+                        <span class="arrow-right">></span>
+                        2003
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">16篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2002-2002&f=year'>
+                        <span class="arrow-right">></span>
+                        2002
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">9篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2001-2001&f=year'>
+                        <span class="arrow-right">></span>
+                        2001
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">3篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a2000-2000&f=year'>
+                        <span class="arrow-right">></span>
+                        2000
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">4篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a1999-1999&f=year'>
+                        <span class="arrow-right">></span>
+                        1999
+                    </a>
+                </p>
+            
+                <p class="cluster-item more">
+                    <span class="unit">12篇</span>
+                    <a href='?q=%e7%88%ac%e8%99%ab+%e6%97%a5%e6%9c%9f%3a1998-1998&f=year'>
+                        <span class="arrow-right">></span>
+                        1998
+                    </a>
+                </p>
+            
+    </div>
+</div>
+
+        
+<div class="md md-cluster">
+    
+    <div class="hd clear">
+        
+        <span class="expand">展开</span>
+        
+        <span class="title">按刊分类</span>
+    </div>
+    <div class="bd">
+        
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">44篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3adnzsyjs-itrzyksb&f=kan' title='电脑知识与技术'>
+                            <span class="arrow-right">></span>
+                            <span class="text">电脑知识与技术</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">32篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjyyyrj&f=kan' title='计算机应用与软件'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机应用与软件</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">30篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjgc&f=kan' title='计算机工程'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机工程</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">25篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3awjfz&f=kan' title='计算机技术与发展'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机技术与发展</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">25篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjyy&f=kan' title='计算机应用'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机应用</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">25篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjgcysj&f=kan' title='计算机工程与设计'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机工程与设计</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item kan">
+                        <span class="unit">18篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjxtyy&f=kan' title='计算机系统应用'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机系统应用</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">18篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjyyyj&f=kan' title='计算机应用研究'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机应用研究</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">18篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3axxwlaq&f=kan' title='信息网络安全'>
+                            <span class="arrow-right">></span>
+                            <span class="text">信息网络安全</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">17篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3arjdk&f=kan' title='软件导刊'>
+                            <span class="arrow-right">></span>
+                            <span class="text">软件导刊</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">16篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3adnbcjqywh&f=kan' title='电脑编程技巧与维护'>
+                            <span class="arrow-right">></span>
+                            <span class="text">电脑编程技巧与维护</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">15篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjgprjyyy&f=kan' title='计算机光盘软件与应用'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机光盘软件与应用</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">15篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjyxdh&f=kan' title='计算机与现代化'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机与现代化</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">14篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjgcyyy&f=kan' title='计算机工程与应用'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机工程与应用</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">13篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjgcykx&f=kan' title='计算机工程与科学'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机工程与科学</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">13篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3axdjsj-xby&f=kan' title='现代计算机（专业版）'>
+                            <span class="arrow-right">></span>
+                            <span class="text">现代计算机（专业版）</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">12篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjkx&f=kan' title='计算机科学'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机科学</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">11篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3ajsjyszgc&f=kan' title='计算机与数字工程'>
+                            <span class="arrow-right">></span>
+                            <span class="text">计算机与数字工程</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">11篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3afjdn&f=kan' title='福建电脑'>
+                            <span class="arrow-right">></span>
+                            <span class="text">福建电脑</span>    
+                        </a>
+                    </p>
+                
+            
+                
+                
+                
+                    <p class="cluster-item more">
+                        <span class="unit">11篇</span>
+                        <a href='?q=%e7%88%ac%e8%99%ab+%e6%9c%9f%e5%88%8aid%3akjxx&f=kan' title='科技信息'>
+                            <span class="arrow-right">></span>
+                            <span class="text">科技信息</span>    
+                        </a>
+                    </p>
+                
+            
+    </div>
+</div>
+
+    </div>
+
+            <div id="relatedword" class="md"></div>
+            
+    <div id="relatedResearchers" class="md"></div>
+    <div id="relatedVeinChart" class="md"></div>
+
+            
+
+<ul class="image_div">
+    <li><a href="http://www.rlzygl.com/zgh/" target="_blank">
+        <img src="http://ad.wanfangdata.com.cn/Images/160x35.gif" alt="《人力资源管理》杂志" /></a>
+    </li>
+    <li><a href="http://www.dgworld.com.cn/" target="_blank">
+        <img src="http://ad.wanfangdata.com.cn/Images/smsj.jpg" alt="数码世界" /></a>
+    </li> 
+<li><a id="ad_link" href="http://www.rlzygl.com/zgh/" target="_blank">
+<img alt="" id="ad_img" src ="http://ad.wanfangdata.com.cn/Images/160x35.gif" border ="0" onmouseover="timerstop();" onmouseout="timercontinue();"/>
+</a></li>  
+</ul>
+
+
+        </div>
+        <div class="right">
+            
+    
+<form id="filterForm" class="narraw-search narrow-item clear narraw-" method="get">
+    <input class="input-item" placeholder="标题" data-value="" />
+    <input class="input-item" placeholder="作者" data-value="" />
+    <input class="input-item" placeholder="关键词" data-value="" />
+    
+    <input class="input-item year begin-year" placeholder="起始年" maxlength="4" data-value="" />
+    <span class="year-to">-</span>
+    <input class="input-item year end-year" placeholder="结束年" maxlength="4" data-value="" />
+    <input type="hidden" id="filterBaseQuery" value="爬虫" />
+    <input type="hidden" id="q" name="q" />
+    <i class="icon icon-close iconfont">&#xe60b;</i>
+    <button class="narraw-search-btn btn" type="submit">
+        <i class="icon iconfont">&#xe604;</i>
+        <span class="text">在结果中检索</span>
+    </button>
+</form>
+
+
+    <div class="tab-sort clear">
+        <span class="limited-group clear">
+            <a href='http://s.wanfangdata.com.cn/Paper.aspx?q=%E7%88%AC%E8%99%AB&f=all' class='highlight_all'>全部</a>
+            
+                <a href='http://s.wanfangdata.com.cn/Paper.aspx?q=%E7%88%AC%E8%99%AB&f=onlyFull' class='common_all'>仅全文</a>
+            
+            
+                
+            
+        </span>
+                
+<span class="sortby narrow-item ">
+    <span class="lb">相关度优先<i class="icon iconfont icon-arrow-down">&#xe602;</i></span>
+    
+        <span class="sort-list">
+            <a href="http://s.wanfangdata.com.cn/Paper.aspx?q=%e7%88%ac%e8%99%ab&f=sort&o=sortby+CitedCount+CoreRank+HasOriginalDoc+date%2fweight%3d5+relevance" title="新论文优先=论文出版时间+其他相关因素
+适用于追踪最新研究进展">新论文优先</a>
+            <a href="http://s.wanfangdata.com.cn/Paper.aspx?q=%e7%88%ac%e8%99%ab&f=sort&o=sortby+CitedCount%2fweight%3d3+CoreRank+HasOriginalDoc+date+relevance%2fweight%3d5" title="经典论文优先=论文质量+其他相关因素
+适用于快速查找并获取研究与主题相关的高质量成果">经典论文优先</a>
+            
+                            <a href="http://s.wanfangdata.com.cn/Paper.aspx?q=%e7%88%ac%e8%99%ab&f=sort&o=sortby+relevance" title="仅以论文关键词价值作为排序依据">仅相关度</a>
+                    
+                            <a href="http://s.wanfangdata.com.cn/Paper.aspx?q=%e7%88%ac%e8%99%ab&f=sort&o=sortby+date" title="仅以出版时间作为排序依据">仅出版时间</a>
+                    
+                            <a href="http://s.wanfangdata.com.cn/Paper.aspx?q=%e7%88%ac%e8%99%ab&f=sort&o=sortby+CitedCount" title="仅以被引次数作为排序依据">仅被引次数</a>
+                    
+        </span>
+</span>
+
+
+        
+    </div>
+    <div class="record-item-list">
+        
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">1.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_jsjyy200509001.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/jsjyy200509001' target="_blank">聚焦<em>爬虫</em>技术研究综述</a>
+            <span class="cited">(<t>被引用</t>&nbsp;336&nbsp;<t>次</t>)</span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-jsjyy.aspx">《计算机应用》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/jsjyy/2005-9.aspx">2005年9期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=jsjyy200509001&Name=%e5%91%a8%e7%ab%8b%e6%9f%b1">周立柱</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=jsjyy200509001&Name=%e6%9e%97%e7%8e%b2">林玲</a>
+        </div>
+        <div class="record-desc">
+            因特网的迅速发展对万维网信息的查找与发现提出了巨大的挑战.对于大多用户提出的与主题或领域相关的查询需求,传统的通用搜索引擎往往不能提供令人满意的结果网页.为了克服通用搜索引擎的以上不足,提出了面向主题的聚焦...<br />
+        </div>
+        <div class="record-keyword">
+            <span>聚焦爬虫</span><span>信息检索</span><span>链接分析</span><span>文本检索</span><span>数据抽取</span><span>协作抓取</span><span>本体描述</span><span>元搜索</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_jsjyy200509001.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/聚焦爬虫技术研究综述.aspx?ID=Periodical_jsjyy200509001' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_jsjyy200509001">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">2.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_jsjfzsjytxxxb201602013.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/jsjfzsjytxxxb201602013' target="_blank">用<em>爬虫</em>法提取书法笔画</a>
+            <span class="cited"></span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-jsjfzsjytxxxb.aspx">《计算机辅助设计与图形学学报》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/jsjfzsjytxxxb/2016-2.aspx">2016年2期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=jsjfzsjytxxxb201602013&Name=%e7%ab%a0%e5%a4%8f%e8%8a%ac">章夏芬</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=jsjfzsjytxxxb201602013&Name=%e5%88%98%e4%bd%b3%e5%b2%a9">刘佳岩</a>
+        </div>
+        <div class="record-desc">
+            笔画承载着书法字区别于打印体的重要信息, 是书法字识别、书法风格分类和作品真伪鉴别的基础. 但书法笔画粗细多变, 有交叉、有变形、有粘连, 尚未有实用的书法笔画提取方法. 为此, 提出用<em>爬虫</em>法提取书法字笔画的方法: 先...<br />
+        </div>
+        <div class="record-keyword">
+            <span>书法字</span><span>书写规则</span><span>笔画爬虫</span><span>笔画提取</span><span>calligraphy character</span><span>writing rules</span><span>stroke crawler</span><span>stroke extraction</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_jsjfzsjytxxxb201602013.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/用爬虫法提取书法笔画.aspx?ID=Periodical_jsjfzsjytxxxb201602013' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_jsjfzsjytxxxb201602013">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">3.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_bjgydxxb201507009.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/bjgydxxb201507009' target="_blank">面向蒙古文主题的网络<em>爬虫</em>采集策略模型</a>
+            <span class="cited"></span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-bjgydxxb.aspx">《北京工业大学学报》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/bjgydxxb/2015-7.aspx">2015年7期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjgydxxb201507009&Name=%e9%a9%ac%e5%bf%97%e5%bc%ba">马志强</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjgydxxb201507009&Name=%e5%bc%a0%e6%b3%bd%e5%b9%bf">张泽广</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjgydxxb201507009&Name=%e9%97%ab%e7%91%9e">闫瑞</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjgydxxb201507009&Name=%e6%9d%a8%e5%8f%8c%e6%b6%9b">杨双涛</a>
+        </div>
+        <div class="record-desc">
+            针对蒙古文主题<em>爬虫</em>主要面临的预测采集URL和发现隧道2个核心问题，提出一种基于主题团的站点聚类、排序和隧道发现的采集模型。通过站点的主题识别，将待爬行URL分为站点链接和非站点链接，使用文本相似度和超链图分析建立了...<br />
+        </div>
+        <div class="record-keyword">
+            <span>主题爬虫</span><span>主题团模型</span><span>相关度计算</span><span>隧道</span><span>N-Gram模型</span><span>focused crawler</span><span>topic group model</span><span>calculation of correlation</span><span>tunnel</span><span>N-Gram model</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_bjgydxxb201507009.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/面向蒙古文主题的网络爬虫采集策略模型.aspx?ID=Periodical_bjgydxxb201507009' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_bjgydxxb201507009">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">4.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_gtlxxb201304006.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/gtlxxb201304006' target="_blank">八脚机器<em>爬虫</em>运动仿真分析</a>
+            <span class="cited"></span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-gtlxxb.aspx">《固体力学学报》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/gtlxxb/2013-4.aspx">2013年4期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=gtlxxb201304006&Name=%e6%bc%86%e7%82%9c">漆炜</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=gtlxxb201304006&Name=%e6%a8%8a%e5%bb%ba%e5%b9%b3">樊建平</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=gtlxxb201304006&Name=%e6%9d%a8%e5%b8%8c%e5%8d%97">杨希南</a>
+        </div>
+        <div class="record-desc">
+            采用叠层IPMC为片状脚,设计左右非对称分布的八脚机器<em>爬虫</em>模型,通过输入电压波形实现动力驱动.运用刚-柔混合技术,确定柔性体片状脚与刚性体地面接触模式,设计合理的行走步态,获得向前不间断的动力驱动.整个分析过程借助...<br />
+        </div>
+        <div class="record-keyword">
+            <span>IPMC</span><span>运动仿真</span><span>八脚机器爬虫</span><span>动力驱动</span><span>稳定性</span><span>IPMC</span><span>dynamic simulation</span><span>8-legged walking reptile</span><span>power-driver</span><span>stability</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_gtlxxb201304006.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/八脚机器爬虫运动仿真分析.aspx?ID=Periodical_gtlxxb201304006' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_gtlxxb201304006">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">5.</span>
+            
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/nyjxxb201606036' target="_blank">基于CheerIO的MEAN Stack气象数据网络<em>爬虫</em>研究</a>
+            <span class="cited"></span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-nyjxxb.aspx">《农业机械学报》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/nyjxxb/2016-6.aspx">2016年6期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=nyjxxb201606036&Name=%e8%83%a1%e6%88%8e">胡戎</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=nyjxxb201606036&Name=%e5%86%af%e4%bb%b2%e7%a7%91">冯仲科</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=nyjxxb201606036&Name=%e8%92%8b%e5%90%9b%e5%bf%97%e4%bc%9f">蒋君志伟</a>
+        </div>
+        <div class="record-desc">
+            为全面、即时搜集分散于互联网上游离的气象数据,满足各行业、各领域、各学科科研部门的数据需求,提出使用Google MEAN Stack全栈技术开发基于CheerIO的高效定向<em>爬虫</em>,充分利用Node.js高性能I/O的特性,实现气象信息的快速搜...<br />
+        </div>
+        <div class="record-keyword">
+            <span>CheerIO</span><span>MEAN Stack</span><span>定向爬虫</span><span>大气气象数据</span><span>CheerIO</span><span>MEAN Stack</span><span>directional crawler</span><span>atmosphere and weather data</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="export exportLink" data-resourceId="Periodical_nyjxxb201606036">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">6.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_rjxb201005016.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/rjxb201005016' target="_blank">广域网分布式Web<em>爬虫</em></a>
+            <span class="cited">(<t>被引用</t>&nbsp;30&nbsp;<t>次</t>)</span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-rjxb.aspx">《软件学报》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/rjxb/2010-5.aspx">2010年5期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=rjxb201005016&Name=%e8%ae%b8%e7%ac%91">许笑</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=rjxb201005016&Name=%e5%bc%a0%e4%bc%9f%e5%93%b2">张伟哲</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=rjxb201005016&Name=%e5%bc%a0%e5%ae%8f%e8%8e%89">张宏莉</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=rjxb201005016&Name=%e6%96%b9%e6%bb%a8%e5%85%b4">方滨兴</a>
+        </div>
+        <div class="record-desc">
+            分析了广域网分布式Web<em>爬虫</em>相对于局域网<em>爬虫</em>的诸多优势,提出了广域网分布式Web<em>爬虫</em>的3个核心问题:Web划分、Agent协同和Agent部署.围绕这3个问题,对目前学术界和商业界出现的多种实现方案和策略进行了全面的综述,深入讨...<br />
+        </div>
+        <div class="record-keyword">
+            <span>搜索引擎</span><span>广域网分布式爬虫</span><span>Web划分</span><span>Agent协同</span><span>Agent部署</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_rjxb201005016.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/广域网分布式Web爬虫.aspx?ID=Periodical_rjxb201005016' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_rjxb201005016">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">7.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_jsjyyyj200710007.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/jsjyyyj200710007' target="_blank">主题网络<em>爬虫</em>研究综述</a>
+            <span class="cited">(<t>被引用</t>&nbsp;233&nbsp;<t>次</t>)</span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-jsjyyyj.aspx">《计算机应用研究》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/jsjyyyj/2007-10.aspx">2007年10期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=jsjyyyj200710007&Name=%e5%88%98%e9%87%91%e7%ba%a2">刘金红</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=jsjyyyj200710007&Name=%e9%99%86%e4%bd%99%e8%89%af">陆余良</a>
+        </div>
+        <div class="record-desc">
+            首先给出了主题网络<em>爬虫</em>的定义和研究目标;然后系统分析了近年来国内外主题<em>爬虫</em>的研究方法和技术,包括基于文字内容的方法、基于超链分析的方法、基于分类器预测的方法以及其他主题爬行方法,并比较了各种方法优缺点;最后对...<br />
+        </div>
+        <div class="record-keyword">
+            <span>主题网络爬虫</span><span>信息检索</span><span>Web挖掘</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_jsjyyyj200710007.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/主题网络爬虫研究综述.aspx?ID=Periodical_jsjyyyj200710007' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_jsjyyyj200710007">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">8.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_qhdxxb200509037.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/qhdxxb200509037' target="_blank">Deep Web<em>爬虫</em>研究与设计</a>
+            <span class="cited">(<t>被引用</t>&nbsp;82&nbsp;<t>次</t>)</span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-qhdxxb.aspx">《清华大学学报（自然科学版）》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/qhdxxb/2005-9.aspx">2005年9期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=qhdxxb200509037&Name=%e9%83%91%e5%86%ac%e5%86%ac">郑冬冬</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=qhdxxb200509037&Name=%e8%b5%b5%e6%9c%8b%e6%9c%8b">赵朋朋</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=qhdxxb200509037&Name=%e5%b4%94%e5%bf%97%e6%98%8e">崔志明</a>
+        </div>
+        <div class="record-desc">
+            随着Web的发展,越来越多的数据可以通过表单提交来获取,这些表单提交所产生信息是由Deep Web后台数据库动态产生的.在这种情况下,信息集成就更加需要Web<em>爬虫</em>来自动获取这些页面以进一步地处理数据.为了帮助用户完成这样...<br />
+        </div>
+        <div class="record-keyword">
+            <span>Deep Web</span><span>导航模式</span><span>领域本体知识库</span><span>爬虫</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_qhdxxb200509037.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/Deep Web爬虫研究与设计.aspx?ID=Periodical_qhdxxb200509037' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_qhdxxb200509037">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">9.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_bjlgdxxb201204011.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/bjlgdxxb201204011' target="_blank">基于反过滤规则集和自动<em>爬虫</em>的XSS漏洞深度挖掘技术</a>
+            <span class="cited">(<t>被引用</t>&nbsp;3&nbsp;<t>次</t>)</span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-bjlgdxxb.aspx">《北京理工大学学报》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                <span title="被EI收录">EI</span>
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/bjlgdxxb/2012-4.aspx">2012年4期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjlgdxxb201204011&Name=%e5%90%b4%e5%ad%90%e6%95%ac">吴子敬</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjlgdxxb201204011&Name=%e5%bc%a0%e5%ae%aa%e5%bf%a0">张宪忠</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjlgdxxb201204011&Name=%e7%ae%a1%e7%a3%8a">管磊</a><a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=bjlgdxxb201204011&Name=%e8%83%a1%e5%85%89%e4%bf%8a">胡光俊</a>
+        </div>
+        <div class="record-desc">
+            为解决Web网站跨站脚本攻击(XSS)问题,通过对XSS漏洞特征及过滤方式的分析,提出了通过反过滤规则集转换XSS代码并用自动<em>爬虫</em>程序实现漏洞代码的自动注入和可用性检验的XSS漏洞挖掘技术,依此方法可以获取XSS漏洞代码的转...<br />
+        </div>
+        <div class="record-keyword">
+            <span>跨站</span><span>XSS反过滤</span><span>XSS漏洞挖掘</span><span>自动爬虫</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_bjlgdxxb201204011.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/基于反过滤规则集和自动爬虫的XSS漏洞深度挖掘技术.aspx?ID=Periodical_bjlgdxxb201204011' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_bjlgdxxb201204011">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="record-item">
+    <div class="left-record">
+        <div class="record-title">
+            <span class="index">10.</span>
+            <a class='fulltext' href='http://f.wanfangdata.com.cn/download/Periodical_kjzy201616030.aspx' target="_blank">全文</a>
+            <a class="title" href='http://d.wanfangdata.com.cn/Periodical/kjzy201616030' target="_blank">基于关键词和支持向量机的财务大数据<em>爬虫</em></a>
+            <span class="cited"></span>
+            
+        </div>
+        <div class="record-subtitle">
+            [期刊论文]&nbsp;
+        <a href="http://c.wanfangdata.com.cn/Periodical-kjzy.aspx">《会计之友》</a>
+            <span class="core">
+                <span title="被中信所《中国科技期刊引证报告》收录">ISTIC</span>
+                
+                
+                <span title="被北京大学《中文核心期刊要目总览》收录">PKU</span>
+                
+            </span>-<a href="http://c.wanfangdata.com.cn/periodical/kjzy/2016-16.aspx">2016年16期</a>
+            <a class="creator" target='_blank' href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=kjzy201616030&Name=%e7%8e%8b%e7%87%95%e5%98%89">王燕嘉</a>
+        </div>
+        <div class="record-desc">
+            从互联网上获取信息进行分析，已经成为人们进行决策的重要手段。有效地从海量数据中获取正确的目标信息是当前的重点和难点问题。通用搜索引擎检索的结果由于主题相关性不强，无法满足特定用户的需求。文章在改进SVM参数寻优...<br />
+        </div>
+        <div class="record-keyword">
+            <span>大数据</span><span>主题爬虫</span><span>支持向量机</span><span>寻优算法</span>
+        </div>
+    </div>
+    <div class="record-action-link">
+        
+        <a class="download" href='http://f.wanfangdata.com.cn/download/Periodical_kjzy201616030.aspx' target="_blank">
+            <i class="icon iconfont icon-download">&#xe605;</i>
+            <span class="text">下载全文</span>
+        </a>
+        <a class="view" href='http://f.wanfangdata.com.cn/view/基于关键词和支持向量机的财务大数据爬虫.aspx?ID=Periodical_kjzy201616030' target="_blank">
+            <i class="icon iconfont icon-view">&#xe606;</i>
+            <span class="text">查看全文</span>
+        </a>
+        
+        <a class="export exportLink" data-resourceId="Periodical_kjzy201616030">
+            <i class="icon iconfont icon-export">&#xe607;</i>
+            <span class="text">导出</span>
+        </a>
+    </div>
+</div>
+
+<p class="pager">
+    <span id="ctl00_RightPlaceHolder_ctl03_PagerControl1" class="page_link">1/306</span>&nbsp;&nbsp;<strong class="page-selected">1</strong><a href="?q=%e7%88%ac%e8%99%ab&amp;f=top&amp;p=2" class="page">2</a>&nbsp;&nbsp;<a href="?q=%e7%88%ac%e8%99%ab&amp;f=top&amp;p=3" class="page">3</a>&nbsp;&nbsp;<a href="?q=%e7%88%ac%e8%99%ab&amp;f=top&amp;p=4" class="page">4</a>&nbsp;&nbsp;<a href="?q=%e7%88%ac%e8%99%ab&amp;f=top&amp;p=5" class="page">5</a>&nbsp;&nbsp;<a href="?q=%e7%88%ac%e8%99%ab&amp;f=top&amp;p=2" class="page">下一页&gt;&gt;</a>&nbsp;&nbsp;
+</p>
+    </div>
+    <div id="hudongwords" class="clear"></div>
+
+        </div>
+    </div><div class="footer-wrap">
+        <div class="lt-bg"></div>
+        <div class="rt-bg"></div>
+        <div class="footer clear">
+            <div class="lt">
+                <div class="top">
+                    <a target="_blank" href="http://www.wanfangdata.com.cn/NewGuide">帮助</a>
+                    <a target="_blank" href="http://www.wanfangdata.com.cn/CustomerService/Services">客户服务</a>
+                    <a target="_blank" href="http://www.sojump.com/jq/4550749.aspx">问卷调查</a>
+                    <a target="_blank" href="http://www.wanfangdata.com.cn/AboutUs/index">关于我们</a>
+                    <a target="_blank" href="http://www.wanfang.com.cn/">公司首页</a>
+                    <a target="_blank" href="http://weibo.com/wanfangdata">平台微博</a>
+                    <a target="_blank" href="http://wanfangdata.zhiye.com/">加入我们</a>
+                    <a target="_blank" href="http://www.wanfangdata.com.cn/Sitemap">网站地图</a>
+                    <a id="langCN" data-lang="zn-CN" class="lang">简</a>
+                    <a id="langTW" data-lang="zn-TW" class="lang">繁</a>
+                    <a id="langEN" data-lang="EN" href="http://www.wanfangdata.com/" target="_blank">ENG</a>
+                </div>
+                <div class="bottom">
+                    <div>
+                        <a target="_blank" href="http://ad.wanfangdata.com.cn/images/hlwcb.jpg">互联网出版许可证：新出网证(京)字042号</a>
+                        <a target="_blank" href="http://ad.wanfangdata.com.cn/images/zhengshu_2.jpg">互联网药品信息服务资格证书号：(京)-经营性-2011-0017</a>
+                        <a target="_blank" href="http://ad.wanfangdata.com.cn/images/stjmxkz2.jpg">信息网络传播视听节目许可证 许可证号：0108284 </a>
+                    </div>
+                    <div>
+                        <a target="_blank" href="http://ad.wanfangdata.com.cn/images/icp.jpg">京ICP证：010071</a>
+                        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020237" ><img src="http://ad.wanfangdata.com.cn/images/gabeian.png" style="margin-right:2px;"/>京公网安备11010802020237号</a>
+<a target="_blank" href="http://ad.wanfangdata.com.cn/images/yunicp.jpg">万方数据知识资源云服务系统[简称：知识云服务平台]V1.0 证书号：软著登字第1016589号</a>
+                    </div>
+                    <p>万方数据知识服务平台--国家科技支撑计划资助项目（编号：2006BAH03B01）©北京万方数据股份有限公司  万方数据电子出版社</p>
+                </div>
+            </div>
+            <div class="rt">
+                <div class="top">
+                    <i class="icon icon-service"></i>
+                    <span>联系客服</span>
+                </div>
+                <ul class="contactus">
+                             <li><i class="contactus-online"></i><a onclick="onlineService('http://www.wanfangdata.com.cn/')">在线客服</a></li>
+                             <li><i class="contactus-tel"></i>4000115888</li>
+                             <li><i class="contactus-email"></i>service@wanfangdata.com.cn</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+     function readXPath(element) {
+      var path = '';
+      // console.log(element,'element');
+    if (element.id!==""){//判断id属性，如果这个元素有id，则显 示#id  形式内容
+        
+      if (element.getAttribute("class")!==null){ //判断class属性，如果这个元素有class，则显 示.class 形式内容
+        var classlist = element.getAttribute("class").split(' ').join('.');
+        // alert(classlist,'classlist')
+        console.log(classlist,'classlist');
+        path= ' > '+element.tagName.toLowerCase()+'#'+element.id+'.'+classlist+path;
+        console.log(path,'path');
+    }else
+      path=' > '+element.tagName.toLowerCase()+'#'+element.id+path;
+      console.log(path,'path')
+    }else if (element.getAttribute("class")!==null){ //判断class属性，如果这个元素有class，则显 示.class形式内容
+        var classlist = element.getAttribute("class").split(' ').join('.');
+        // alert(classlist,'classlist')
+        path= ' > '+element.tagName.toLowerCase()+'.'+classlist+path;
+        console.log(path,'path');
+    }else
+      path= ' > '+element.tagName.toLowerCase()+path;
+
+    // console.log(document.body,'document.body')
+    if (element===document.body){//递归到body处，结束递归
+      // console.log(element,'element')
+        console.log(element,'element22222');
+        return 'html > '+'body';
+        // element.tagName;
+    }else{
+      console.log(path,'path;;')
+      return readXPath(element.parentNode)+path;
+    }
+};
+
+
+// 用jQuery写的，当鼠标点击一个元素时，显示元素的xpath路径
+
+$(document).ready(function () {
+    // alert('ok');
+    var path = '', o;
+    $('*').click(function (e) {
+        e.stopPropagation();//停止冒泡
+        e.preventDefault();
+        o = this;//传入dom对象
+        console.log(o,'0000')
+        path = readXPath(o);
+        // alert(path);
+        $(path).css('backgroundColor','red');
+        // alert(readXPath(o));
+        // readXPath(o);
+    });
+});
+  </script>
+
+
+</body>
+</html>
